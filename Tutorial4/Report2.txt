@@ -1,0 +1,77 @@
+Spaced Retrieval Practice and Long-Term Retention in Introductory Statistics: A Randomized Classroom Trial
+
+Abstract
+
+Students often study by rereading notes or cramming before exams, strategies that feel effective but produce poor long-term retention. Spaced retrieval practice, in which learners repeatedly test themselves on material at increasing intervals, has strong support in laboratory research, but evidence from real university courses is mixed. We conducted a randomized trial in an introductory statistics course with 412 undergraduates. Students were assigned to one of three conditions: weekly spaced quizzes with cumulative review, massed quizzes given only before each exam, or a control condition with no required quizzes. On the final exam, the spaced group scored 8.6 percentage points higher than the control group and 5.1 points higher than the massed group. Six weeks later, an unannounced retention test showed a larger gap. Benefits were greatest for students with lower prior mathematics preparation. Spaced quizzing appears to be a low-cost intervention that improves both course performance and durable learning.
+
+1. Introduction
+
+Retention of knowledge after a course ends is a central goal of higher education, yet studies repeatedly show that students forget large portions of course content within months. Two well-established findings from cognitive psychology suggest how this might be improved. The testing effect shows that retrieving information from memory strengthens it more than restudying the same information. The spacing effect shows that distributing practice over time produces better long-term retention than concentrating it in a single session.
+
+Despite this evidence, most students report that they prefer rereading and highlighting, and many concentrate studying in the days before an exam. Instructors face practical constraints as well: designing frequent low-stakes quizzes takes effort, and there are concerns that quizzes reduce time for new material or increase student anxiety. Prior classroom studies have produced inconsistent results, partly because they differ in quiz format, timing, and the extent to which quizzes cover earlier material.
+
+The present study tests whether a simple, scalable spaced quizzing routine improves final exam performance and delayed retention in a large introductory statistics course. Statistics was chosen because it is a required course for many majors, has cumulative content, and is a subject in which many students report anxiety and low confidence.
+
+2. Method
+
+2.1 Participants and design
+
+Participants were 412 students enrolled in six sections of introductory statistics at a public university, taught by the same instructor using the same syllabus, lectures, and exams. Students were randomly assigned within each section to one of three conditions, with 138 in the spaced condition, 136 in the massed condition, and 138 in the control condition. Assignment was concealed from the instructor during grading. Twenty-six students withdrew from the course before the final exam and were excluded, leaving 386 in the primary analysis.
+
+2.2 Conditions
+
+In the spaced condition, students completed a 10-question online quiz each week. Six questions covered the most recent lecture, and four were drawn from earlier weeks, with older topics reappearing at expanding intervals of one, three, and six weeks. Feedback with correct answers was shown immediately after each question. In the massed condition, students completed the same total number of questions, but only in the week before each of the three midterm exams, covering that exam's material. The control condition received no required quizzes but had access to the same practice problems and the same optional office hours as the other groups.
+
+2.3 Measures
+
+The primary outcome was the score on a cumulative final exam, which was identical for all students and was graded by two raters blind to condition. A secondary outcome was a 30-item retention test administered six weeks after the end of the term through an online invitation, to which 71 percent of students responded. Additional measures included a prior mathematics preparation score based on placement test results, self-reported study time, and an end-of-term survey on test anxiety and perceived usefulness of the quizzes.
+
+2.4 Analysis
+
+Scores were analyzed with linear regression models that included condition, prior preparation, and section as predictors. Effect sizes were computed as standardized mean differences. Because the retention test had a response rate below 100 percent, we compared respondents and non-respondents on baseline characteristics and used inverse probability weighting as a sensitivity check.
+
+3. Results
+
+3.1 Final exam performance
+
+The mean final exam score was 71.3 percent in the control group, 74.8 percent in the massed group, and 79.9 percent in the spaced group. The spaced group outperformed the control group by 8.6 percentage points, a standardized effect of 0.48, and outperformed the massed group by 5.1 points, an effect of 0.29. The massed group did not differ significantly from the control group after adjusting for prior preparation. Section-level differences were small and did not alter the pattern.
+
+3.2 Delayed retention
+
+On the six-week retention test, the control group averaged 48.2 percent, the massed group 51.0 percent, and the spaced group 61.7 percent. The gap between the spaced and control groups therefore grew to 13.5 points, an effect of 0.71. Results were similar after inverse probability weighting for nonresponse. Forgetting between the final exam and the retention test was substantially smaller in the spaced group, which lost 18.2 points on average, than in the control group, which lost 23.1 points.
+
+3.3 Differences by preparation and engagement
+
+Students in the lowest third of the prior mathematics preparation distribution gained the most from spaced quizzing, scoring 11.4 points higher than comparable control students on the final exam. Students in the top third gained 4.9 points. Quiz completion averaged 87 percent in the spaced group; completion rates were similar across preparation levels. Self-reported weekly study time did not differ across conditions, suggesting that gains reflected a change in how students studied rather than simply how long.
+
+3.4 Student perceptions
+
+In the end-of-term survey, 64 percent of students in the spaced condition said the weekly quizzes helped them learn, and 58 percent said they felt more prepared for exams. However, 31 percent said the quizzes were stressful. Test anxiety scores did not differ significantly between conditions. Interestingly, students in the spaced condition rated their own learning as harder and less fluent than control students did, consistent with the idea that effective practice feels more effortful.
+
+4. Discussion
+
+The findings extend laboratory evidence on retrieval practice and spacing to a large, real course. Spaced quizzing improved final exam scores by nearly half a standard deviation and delivered an even larger advantage after a delay. The comparison with the massed condition is informative: giving the same number of quizzes but clustering them before exams provided little benefit, which indicates that the timing and cumulative nature of the practice, and not just the amount of testing, was responsible for the improvement.
+
+The larger benefit for students with weaker mathematics backgrounds is encouraging from an equity perspective. Frequent low-stakes retrieval may help less-prepared students consolidate foundational concepts that later topics depend upon, and provides them with regular feedback about what they do not yet understand. Because the intervention required no additional class time and used a standard learning management system, it could be adopted in other courses at little cost.
+
+Instructors should note that students may not welcome the approach at first. The perception that spaced practice is harder and less effective than rereading is a well-known barrier, and it may reduce voluntary adoption. Brief explanations of why effortful retrieval works, along with modest course credit for completing the quizzes, may help sustain participation.
+
+5. Limitations
+
+The trial was conducted in a single course at one institution with one instructor, so results may not generalize to other subjects or student populations. Students in different conditions attended the same lectures and may have discussed the quizzes with one another, which would bias the estimated effects downward. The retention test had a 71 percent response rate, and although weighting produced similar results, unmeasured differences between responders and non-responders cannot be ruled out. We did not measure transfer to later courses, which is the ultimate goal of durable learning.
+
+6. Conclusion
+
+A simple weekly spaced quiz routine with cumulative review raised exam performance and long-term retention in an introductory statistics course, with the largest benefits for students who entered with weaker preparation. Institutions seeking low-cost ways to improve learning outcomes should consider encouraging spaced retrieval practice in high-enrollment gateway courses, and future research should test its effect on performance in subsequent courses.
+
+References
+
+Abernathy, K., and Lindqvist, S. (2017). Testing effects in large lecture courses: a meta-analytic review. Educational Psychology Quarterly, 29(3), 190-214.
+
+Dimitrov, N. (2020). Spacing and interleaving in university mathematics instruction. Journal of Learning and Instruction, 11(1), 12-35.
+
+Okonkwo, E., Ramirez, J., and Baird, T. (2019). Student beliefs about effective study strategies and the illusion of fluency. Cognition in Education, 7(2), 88-104.
+
+Petrov, A. (2021). Low-stakes quizzing and test anxiety: evidence from four field experiments. Higher Education Research Notes, 16(4), 301-319.
+
+Vance, R., and Idowu, F. (2018). Forgetting curves in introductory science courses. Journal of Applied Memory Research, 9(3), 150-167.

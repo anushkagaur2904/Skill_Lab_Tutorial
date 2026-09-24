@@ -1,0 +1,81 @@
+Federated Learning for Chest X-Ray Diagnosis Across Hospitals Without Sharing Patient Data
+
+Abstract
+
+Deep learning models can detect abnormalities in chest radiographs with high accuracy, but training them requires large, diverse datasets that individual hospitals rarely have and cannot easily pool because of privacy regulations. Federated learning allows institutions to collaboratively train a shared model while keeping patient data on local servers. We evaluated federated training of a convolutional neural network across seven hospitals in four countries, using 184,000 chest X-rays labeled for five common findings. The federated model achieved an average area under the curve of 0.89, compared with 0.83 for the average single-hospital model and 0.91 for a hypothetical centralized model trained on pooled data. Federated training also generalized better to an external hospital not involved in training. Differences in scanner types and labeling practices between sites reduced performance, but a simple personalization step recovered most of the loss. The results indicate that federated learning can offer near-centralized accuracy while preserving patient privacy.
+
+1. Introduction
+
+Chest radiography is the most commonly performed imaging examination in the world, and automated interpretation could help radiologists prioritize urgent cases and support clinicians in settings where specialist reviewers are scarce. Recent neural networks have matched radiologists on specific tasks such as detecting pneumothorax or pleural effusion. However, models trained at a single hospital often perform worse when applied elsewhere, because patient populations, imaging equipment, and reporting conventions differ between sites.
+
+The obvious remedy is to train on data from many hospitals. In practice, this is difficult. Medical images are protected by privacy laws such as HIPAA in the United States and the GDPR in Europe, and hospitals are reluctant to transfer data to external parties because of legal risk, reputational concerns, and competitive considerations. Even de-identified images can sometimes be linked back to individuals, and many institutions prohibit external transfer altogether.
+
+Federated learning offers an alternative. In this approach, a central coordinator sends the current model to each participating hospital, each hospital trains it briefly on its own data, and only the resulting model updates, not the images, are returned and averaged to improve the global model. The process repeats for many rounds. Although the technique is promising, few studies have tested it across hospitals in multiple countries with genuinely different equipment and labeling practices. This study asks how close federated training can come to centralized training, how well the resulting model generalizes to unseen hospitals, and what practical problems arise in a real multi-site deployment.
+
+2. Methods
+
+2.1 Data
+
+Seven hospitals contributed retrospective chest X-rays from adult patients, totaling 184,000 images, with site sizes ranging from 9,000 to 52,000. Images were labeled for five findings: cardiomegaly, pleural effusion, consolidation, pneumothorax, and lung nodules. Labels were extracted from radiology reports using a natural language processing tool at four sites and by manual annotation at three. An eighth hospital, contributing 12,000 images, was held out entirely as an external test set. Each site kept its data on local servers, and 15 percent of each site's images were reserved for local testing.
+
+2.2 Model and training
+
+All sites used the same convolutional neural network architecture, a 121-layer densely connected network pre-trained on natural images. In the federated setting, we used federated averaging with 60 communication rounds, in which each site trained for two local epochs per round. Updates were weighted by local dataset size. To protect against leakage of information through model updates, we applied gradient clipping and added calibrated random noise, consistent with differential privacy at a moderate privacy budget.
+
+2.3 Comparison conditions
+
+We compared three approaches. Local training used only each hospital's own data. Centralized training pooled all data on a single server and served as an upper benchmark, although it would not be feasible in practice. Federated training used the protocol above. We additionally tested a personalization step in which each site fine-tuned the final federated model on its own data for a small number of epochs.
+
+2.4 Evaluation
+
+Performance was measured by the area under the receiver operating characteristic curve, averaged across the five findings. We report results on each site's local test set and on the external hospital. Confidence intervals were estimated by bootstrapping. We also examined calibration and performance in subgroups defined by age and sex.
+
+3. Results
+
+3.1 Overall accuracy
+
+Locally trained models achieved an average area under the curve of 0.83, with wide variation from 0.76 at the smallest site to 0.88 at the largest. The federated model reached 0.89 on average across sites, a substantial gain over local training, and came within 0.02 of the centralized model at 0.91. The smallest sites benefited most, with improvements of 0.10 or more, while the largest site gained only 0.02 over its local model.
+
+3.2 Generalization to an external hospital
+
+On the held-out hospital, the average locally trained model scored 0.77, the federated model scored 0.86, and the centralized model scored 0.87. Thus the federated model retained nearly all the generalization benefit of pooling data. Local models suffered most on pneumothorax and consolidation, where appearance varied greatly across scanner types.
+
+3.3 Site heterogeneity
+
+Federated training converged more slowly and less smoothly than centralized training. Two sites with unusually different image characteristics, one using older computed radiography equipment and one with a high proportion of portable bedside images, produced updates that pulled the shared model in conflicting directions during early rounds. Labeling differences also mattered: sites using automated report extraction labeled borderline nodules as positive more often than those with manual annotation. This inconsistency lowered nodule detection performance for the global model to 0.81, the weakest of the five findings.
+
+3.4 Personalization and privacy
+
+Fine-tuning the federated model locally for three epochs raised the average site-level area under the curve from 0.89 to 0.90, recovering half of the remaining gap to the centralized model, and improved performance at the two most atypical sites by 0.03 to 0.04. The differential privacy noise reduced average accuracy by 0.01 compared with federated training without noise, a modest cost. Attempts to reconstruct training images from shared updates in a simulated attack were unsuccessful at the chosen privacy setting, though they succeeded partially when noise was removed.
+
+3.5 Subgroup performance
+
+Performance was similar for men and women, with differences under 0.01. Accuracy was lower for patients over 80 years old, with an average area under the curve of 0.85, likely due to a higher prevalence of overlapping findings and devices such as pacemakers. Calibration was acceptable at most sites but overconfident at the two atypical sites until personalization was applied.
+
+4. Discussion
+
+The study shows that federated learning can produce a chest X-ray model nearly as accurate as one trained on pooled data, while generalizing substantially better than models trained at any single hospital. For institutions with small datasets, participation in a federation offers a large improvement without requiring data to leave the building. This may be particularly valuable for hospitals in lower-resource settings, which are often underrepresented in publicly available datasets.
+
+The practical challenges we encountered are as important as the headline accuracy. Differences in equipment and labeling conventions produced conflicting updates and inconsistent ground truth, and no algorithm can fully compensate for labels that mean different things at different sites. Harmonizing label definitions and running a small common audit set through every site's labeling process would likely improve results more than any change to the training algorithm. Communication costs were also significant: each round required transferring roughly 30 megabytes of model updates per site, and two sites with limited bandwidth delayed training. Institutions should plan for governance, agreements on liability, and secure infrastructure, which required longer to set up than the technical work itself.
+
+Privacy protection is not absolute. Our simulated attack failed at the chosen noise level, but privacy guarantees depend on careful configuration, and stronger protection reduces accuracy. Regulators and ethics boards may need clearer guidance on whether federated model updates count as personal data.
+
+5. Limitations
+
+All sites were academic medical centers, so results may differ for community hospitals or clinics with more variable image quality. Data were retrospective and labels were derived from reports, which contain their own errors. We evaluated on one external hospital only. We did not assess whether the model improves clinical outcomes or radiologist efficiency, which would require prospective studies. The differential privacy analysis used one privacy budget, and other settings could change the balance between privacy and accuracy.
+
+6. Conclusion
+
+Federated learning allowed seven hospitals to jointly train a chest X-ray classifier that approached the accuracy of centralized training, generalized well to an unseen hospital, and kept patient images on local servers. Simple personalization and careful harmonization of labels further improved performance. Future work should focus on prospective clinical validation, standardized labeling across sites, and clearer legal frameworks for sharing model updates across institutions and borders.
+
+References
+
+Adeyemi, O., and Larsen, K. (2020). Cross-site variation in chest radiograph classifiers. Journal of Medical Imaging Informatics, 12(2), 140-158.
+
+Fontaine, J., Mishra, S., and Weber, P. (2021). Differential privacy for distributed medical model training. Health Data Security Review, 4(3), 201-219.
+
+Gutierrez, L. (2019). Legal barriers to medical image sharing across jurisdictions. Digital Health Law Journal, 6(1), 55-73.
+
+Hoang, T., and Reilly, M. (2022). Personalization strategies in federated healthcare models. Machine Learning for Clinical Practice, 3(4), 288-306.
+
+Kowalczyk, B. (2018). Label noise in report-derived radiology datasets. Radiology Data Science, 2(2), 97-112.

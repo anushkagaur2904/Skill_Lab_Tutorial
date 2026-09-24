@@ -1,0 +1,131 @@
+==============================================================================
+DOMAIN-SPECIFIC WORD2VEC: legal vs. medical
+==============================================================================
+
+Corpus sizes: legal=13,423 tokens, medical=12,199 tokens (1500 sentences each)
+Example legal  : the appellant sought a discharge of the lien after the hearing
+Example medical: the physician diagnosed pneumonia based on the biopsy
+
+Hyperparameters: {'dim': 50, 'window': 4, 'negatives': 5, 'epochs': 40, 'lr': 0.025}
+
+Training models...
+  [legal]
+    epoch   1/40  loss 2.9633
+    epoch  11/40  loss 1.6983
+    epoch  21/40  loss 1.6607
+    epoch  31/40  loss 1.6311
+    epoch  40/40  loss 1.6197
+    vocab = 125
+  [medical]
+    epoch   1/40  loss 3.0260
+    epoch  11/40  loss 1.8294
+    epoch  21/40  loss 1.7821
+    epoch  31/40  loss 1.7642
+    epoch  40/40  loss 1.7374
+    vocab = 127
+  [joint]
+    epoch   1/40  loss 2.8983
+    epoch  11/40  loss 1.6224
+    epoch  21/40  loss 1.5921
+    epoch  31/40  loss 1.5579
+    epoch  40/40  loss 1.5412
+    vocab = 228
+
+==============================================================================
+A. SAME WORD, DIFFERENT DOMAIN: nearest neighbours (cosine)
+==============================================================================
+
+'discharge'
+   legal-only  : lien (0.67), approved (0.67), bankruptcy (0.66), petition (0.56), obligations (0.56)
+   medical-only: ready (0.65), purulent (0.63), wound (0.62), approved (0.60), limited (0.57)
+   joint model : bankruptcy (0.61), approved (0.61), wound (0.52), purulent (0.52), lien (0.52)
+
+'trial'
+   legal-only  : verdict (0.61), returned (0.56), favor (0.56), prepared (0.56), scheduled (0.50)
+   medical-only: fewer (0.81), group (0.81), randomized (0.79), tested (0.77), evaluated (0.74)
+   joint model : group (0.59), tested (0.58), randomized (0.57), evaluated (0.55), verdict (0.53)
+
+'case'
+   legal-only  : appeal (0.61), subpoena (0.57), affidavit (0.57), brief (0.56), lost (0.55)
+   medical-only: described (0.52), involved (0.50), report (0.49), complaint (0.47), can (0.45)
+   joint model : appeal (0.51), affidavit (0.47), involved (0.47), subpoena (0.46), lost (0.46)
+
+'complaint'
+   legal-only  : add (0.66), lack (0.59), claim (0.59), jurisdiction (0.56), amended (0.55)
+   medical-only: recorded (0.65), chief (0.64), measured (0.57), presented (0.57), approved (0.52)
+   joint model : add (0.61), lack (0.59), jurisdiction (0.58), claim (0.50), amended (0.50)
+
+'condition'
+   legal-only  : precedent (0.74), performance (0.73), meet (0.66), contained (0.65), failed (0.65)
+   medical-only: chronic (0.55), limited (0.49), approved (0.48), measured (0.47), monitored (0.46)
+   joint model : precedent (0.56), performance (0.54), chronic (0.50), meet (0.50), satisfied (0.50)
+
+'motion'
+   legal-only  : summary (0.63), judgment (0.61), appeared (0.59), dismiss (0.59), opposed (0.53)
+   medical-only: range (0.75), joint (0.71), limited (0.70), regained (0.64), measured (0.63)
+   joint model : limited (0.59), range (0.58), judgment (0.56), joint (0.56), summary (0.52)
+
+'order'
+   legal-only  : issued (0.69), imposed (0.67), granting (0.66), signed (0.58), violated (0.57)
+   medical-only: wrote (0.67), followed (0.61), signed (0.58), give (0.58), underwent (0.56)
+   joint model : issued (0.61), followed (0.60), granting (0.59), wrote (0.57), give (0.55)
+
+==============================================================================
+B. SENSE ANCHORING: cosine to a domain anchor word in each domain-only model
+==============================================================================
+word           legal: sim(word, court)   medical: sim(word, patient)
+discharge                        0.110                         0.333
+trial                           -0.047                         0.198
+case                             0.223                         0.249
+complaint                        0.004                         0.215
+condition                        0.058                         0.243
+motion                           0.178                         0.270
+order                            0.221                         0.144
+
+==============================================================================
+C. CATEGORY COHERENCE (nearest-5 label purity among unambiguous domain words)
+==============================================================================
+  legal    category purity@5 = 0.732    domain purity@5 = 1.000
+  medical  category purity@5 = 0.950    domain purity@5 = 1.000
+  joint    category purity@5 = 0.844    domain purity@5 = 1.000
+  (chance level for category purity is roughly 0.07-0.10)
+
+  Joint model mean cosine: within-legal=0.402  within-medical=0.447  legal<->medical=0.168
+
+==============================================================================
+D. ANALOGIES in the joint model  (a : b :: c : ?)
+==============================================================================
+  physician:patient :: attorney:?  ->  counsel (0.65), void (0.49), dismiss (0.44)   MISS (expected: ['client']...)
+  patient:physician :: client:?  ->  advised (0.60), accept (0.56), give (0.52)   MISS (expected: ['attorney', 'counsel']...)
+  hospital:patient :: court:?  ->  appellate_court (0.70), district_court (0.64), tribunal (0.63)   MISS (expected: ['appellant', 'defendant', 'judge']...)
+  patient:hospital :: defendant:?  ->  plaintiff (0.70), appellant (0.70), respondent (0.68)   MISS (expected: ['appellate_court', 'court', 'district_court']...)
+  top-1 accuracy: 0/4
+
+==============================================================================
+E. DOMAIN BIAS in the JOINT model   (bias = cos(w, medical centroid) - cos(w, legal centroid))
+==============================================================================
+  unambiguous legal words   : mean -0.395  (n=47)
+  unambiguous medical words : mean +0.415  (n=52)
+  discharge    -0.111
+  trial        -0.078
+  case         -0.028
+  complaint    -0.032
+  condition    +0.080
+  motion       -0.052
+  order        -0.085
+  -> a single vector must represent both senses, so polysemous words have a bias near 0
+     (they are pulled toward both domains) while unambiguous words are strongly one-sided.
+
+==============================================================================
+F. HOW MUCH TEXT DO WE NEED?  (joint model, mean of 3 seeds)
+==============================================================================
+   sent/domain   category purity@5   domain purity@5
+            25               0.190             0.838
+            50               0.222             0.901
+           100               0.466             0.984
+           200               0.698             0.993
+           500               0.819             0.997
+          1000               0.840             1.000
+          1500               0.844             1.000
+
+Saved: embedding_map.png, analysis_plots.png, vectors_{legal,medical,joint}.txt

@@ -1,0 +1,79 @@
+Green Roofs and Urban Heat Mitigation: A Two-Year Field Study in a Mid-Sized Coastal City
+
+Abstract
+
+Urban heat islands raise summer temperatures in dense cities, increasing energy demand and heat-related illness. This study measured the cooling effect of extensive green roofs on 24 municipal and commercial buildings over two summers. Roof surface temperature, indoor air temperature, and stormwater runoff were monitored against matched conventional roofs. Green roofs reduced peak roof surface temperature by an average of 21.4 degrees Celsius and lowered top-floor indoor temperature by 2.3 degrees. Air conditioning electricity use fell by 9 percent on average. Effects on neighborhood-scale air temperature were small and statistically uncertain. The results suggest that green roofs deliver strong building-level benefits but that citywide cooling requires coverage far above current levels.
+
+1. Introduction
+
+Cities are typically warmer than the surrounding countryside because dark, impervious surfaces absorb solar radiation and release it slowly after sunset, while vegetation and open water that would otherwise cool the air through evapotranspiration are scarce. This urban heat island effect is expected to intensify as global temperatures rise and urban populations grow. In the study city, summer nights are now on average 3.1 degrees warmer in the dense downtown than in the surrounding suburbs, and the number of days exceeding 32 degrees has doubled since 1990.
+
+Green roofs, which consist of a waterproof membrane, a growing medium, and a layer of drought-tolerant vegetation, have been promoted as a way to reduce heat gain. They shade the roof, insulate the building, and cool the air through evapotranspiration. Municipal policy in the study city offers a tax rebate for green roof installation, yet there is limited local evidence about how much cooling they actually provide in a humid coastal climate with frequent summer storms. Most published studies come from continental or arid climates, and many rely on simulations rather than measurements.
+
+This study addresses three questions. First, how much do green roofs reduce roof surface and indoor temperatures compared with conventional roofs? Second, do the reductions translate into measurable energy savings? Third, is there detectable cooling at the scale of the surrounding street or neighborhood?
+
+2. Methods
+
+2.1 Site selection
+
+Twenty-four buildings were selected from a municipal inventory of 61 buildings with existing extensive green roofs. Each was paired with a nearby building of similar height, age, use, and roof area that had a conventional roof, either dark membrane or gravel ballast. Pairs were located within 400 meters of each other to ensure comparable exposure. Buildings included schools, libraries, offices, and light-industrial warehouses. Green roof substrate depth ranged from 6 to 15 centimeters, and vegetation was primarily sedum with some native grasses.
+
+2.2 Instrumentation
+
+Each roof was fitted with infrared surface temperature sensors and a shaded air temperature and humidity logger placed one meter above the surface. Indoor air temperature was recorded on the top floor of each building at 10-minute intervals. Electricity use for cooling was obtained from utility sub-meters where available, which covered 15 of the 24 pairs. Runoff was measured at roof drains on 10 pairs using tipping-bucket gauges. Data were collected from June through September in two consecutive years.
+
+2.3 Neighborhood-scale measurements
+
+To test for cooling beyond the building, 30 low-cost air temperature sensors were mounted on street poles at pedestrian height in six neighborhoods that differed in green roof density, from less than 1 percent to 11 percent of roof area. Measurements were compared with a regional weather station to control for background conditions.
+
+2.4 Analysis
+
+Differences between paired roofs were analyzed with mixed-effects regression models that included building pair as a random effect and controlled for daily maximum air temperature, cloud cover, and wind speed. Energy savings were normalized by floor area and cooling degree days. Neighborhood temperatures were modeled as a function of green roof density, tree canopy cover, and distance to the waterfront.
+
+3. Results
+
+3.1 Roof surface and indoor temperatures
+
+On days when the regional air temperature exceeded 30 degrees, the peak surface temperature of conventional roofs averaged 61.8 degrees, compared with 40.4 degrees for green roofs, a reduction of 21.4 degrees. The difference was largest on clear, calm afternoons and smallest during rain or heavy cloud. Green roofs also showed much smaller daily temperature swings, which reduces thermal stress on the waterproof membrane and is expected to extend its service life.
+
+Top-floor indoor air temperature was 2.3 degrees lower under green roofs during heat events, on average. The effect was stronger in buildings with limited existing insulation, where the reduction reached 3.6 degrees, and weaker in newer buildings with high insulation standards, where it averaged 1.1 degrees. Substrate depth mattered: roofs with 12 centimeters or more of substrate performed about 30 percent better than those with 8 centimeters or less.
+
+3.2 Energy use
+
+Among the 15 pairs with sub-metering, buildings with green roofs used 9 percent less electricity for cooling over the season, after normalizing for floor area and weather. The savings ranged from 2 percent to 17 percent. Savings were concentrated in July and August. In absolute terms the average saving was modest, roughly 2.8 kilowatt-hours per square meter of roof per season, and payback on installation costs through energy savings alone would exceed 30 years. Winter heating savings were not measured but are expected to be small in this climate.
+
+3.3 Stormwater
+
+Green roofs retained 58 percent of rainfall over the season, with retention falling to 23 percent during storms exceeding 25 millimeters when the substrate was already saturated. Peak runoff rates were reduced by 71 percent on average, delaying the flow into storm drains by roughly 40 minutes. This is a substantial benefit for a city with a combined sewer system that overflows during intense rainfall.
+
+3.4 Neighborhood cooling
+
+Street-level air temperature was not clearly related to green roof density. After controlling for tree canopy and distance to the waterfront, each additional 10 percent of roof area covered by green roofs was associated with a 0.2 degree reduction in afternoon air temperature, but the confidence interval spanned zero. In contrast, a 10 percent increase in tree canopy was associated with a 0.9 degree reduction. Because the highest green roof density sampled was only 11 percent, the study could not assess the effect of extensive coverage.
+
+4. Discussion
+
+The results confirm that green roofs are highly effective at reducing heat at the building scale. The 21-degree reduction in roof surface temperature is consistent with values reported for other climates, and the indoor benefit is meaningful for older, poorly insulated buildings such as schools that lack air conditioning. For such buildings, green roofs may reduce heat stress for occupants as well as saving energy.
+
+The lack of a clear neighborhood-scale effect should not be interpreted as evidence that green roofs have no such effect. Roofs are elevated above pedestrian height, and much of the cooling they produce is carried away by wind rather than reaching the street. Modeling studies suggest that measurable street-level cooling requires roughly 30 to 50 percent coverage of available roof area, which is far beyond what is currently in place. In the near term, street trees and shaded public spaces appear to be a more reliable way to cool the places where people walk and wait for transit.
+
+The energy savings, while real, are too small to justify green roofs on financial grounds alone. The strongest case rests on combined benefits, including stormwater management, longer roof membrane life, habitat for pollinators, and heat relief inside vulnerable buildings. Policy makers should therefore consider targeting incentives toward buildings where these combined benefits are largest, such as older public buildings in high-runoff drainage basins.
+
+5. Limitations
+
+The study was limited to extensive green roofs with shallow substrate; intensive roofs with deeper soil and larger plants may perform differently. Sub-metered energy data were available for only 15 of 24 pairs, and building operations such as thermostat schedules could not be fully controlled. The two-year study period included one unusually wet summer, which may have inflated evapotranspiration and stormwater retention. Neighborhood sensors were low-cost devices with an accuracy of about 0.5 degrees, limiting the ability to detect small effects.
+
+6. Conclusion
+
+Extensive green roofs reduced roof surface temperatures by more than 20 degrees, lowered top-floor indoor temperatures by more than 2 degrees, and cut cooling electricity use by about 9 percent in a humid coastal city. They also retained a majority of seasonal rainfall. However, no reliable cooling of street-level air was detected at current levels of coverage. Cities seeking to reduce outdoor heat exposure should pair green roof programs with expanded tree planting, while using green roofs primarily to improve building performance and manage stormwater.
+
+References
+
+Alvarez, M., and Okafor, T. (2019). Thermal performance of vegetated roofs in temperate climates. Journal of Urban Environmental Studies, 14(2), 101-118.
+
+Bergstrom, L. (2021). Evapotranspiration and roof cooling: a review of field evidence. Building and Climate Review, 8(4), 233-251.
+
+Chen, H., Rao, P., and Silva, D. (2020). Neighborhood-scale effects of urban greening: a modeling comparison of roofs, trees, and reflective surfaces. Urban Climate Letters, 5(1), 44-62.
+
+Haldane, R. (2018). Stormwater retention by extensive green roofs under intense rainfall. Journal of Water Infrastructure, 22(3), 310-327.
+
+Nakamura, Y., and Fitzgerald, C. (2022). Heat exposure and building insulation in older public schools. Public Health and the Built Environment, 3(2), 77-90.
